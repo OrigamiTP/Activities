@@ -15,19 +15,30 @@ class Validação{
         this.msg = msg
     }
 }
+let Senha = "Jorginho123!"
+
+console.log(Senha)
 
 function validarSenha(Senha: string){
 
-    console.log(Senha)
-
-
-    if(Senha.length <= 8){
-        if(Senha){
-
-        }
+    if(Senha.length <= 7){
+        const val8 = new Validação(false, "Sua senha deve ter, no mínimo, 8 caracteres")
+        console.log(val8.msg)
+        return
     }
-    else{
-        const val8 = new Validação(false, "Sua senha não teve a quantidade de caracteres sufuciente, tente uma senha com 8 caracteres.")
+    if(!Senha.match(/[0-9]/)){
+        const valNum = new Validação(false, "Sua senha deve conter um digito numérico")
+        console.log(valNum.msg)
+        return
+    }    
+    if(Senha.match(/![!@#$%¨&*()=_+-]/)){
+        const valSim = new Validação(false, "Sua senha deve conter um digito alfanumerico") 
+        console.log(valSim.msg)
+        return 
     }
+        const valCorreta = new Validação(true, "Suas credenciais são o suficiente para criar uma senha")
+        console.log(valCorreta.msg)
+    
+
 }
-validarSenha("12345678")
+validarSenha(Senha)
